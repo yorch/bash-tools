@@ -1,0 +1,9 @@
+#!/bin/bash
+####################################################################
+# Gets the public IP address of current server
+# Using WhatIsMyIp.org
+# yorch (jorge.barnaby {at} gmail.com) - March 2012
+####################################################################
+
+ipservice=whatismyip.org
+echo $(curl -s $ipservice)

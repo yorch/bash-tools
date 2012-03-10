@@ -1,0 +1,8 @@
+#!/bin/bash
+####################################################################
+# Gets the IP address of the given host
+# Using nslookup (on Ubuntu, install dnsutils package)
+# yorch (jorge.barnaby {at} gmail.com) - March 2012
+####################################################################
+
+echo $(nslookup $1 | grep Address | sed 1d | egrep -o '[0-9.]+')
