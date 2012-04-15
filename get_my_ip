@@ -1,9 +1,18 @@
 #!/bin/bash
 ####################################################################
 # Gets the public IP address of current server
-# Using WhatIsMyIp.org
-# yorch (jorge.barnaby {at} gmail.com) - March 2012
+# Using checkip.dyndns.org
+# yorch (jorge.barnaby {at} gmail.com) - April 2012
 ####################################################################
 
-ipservice=whatismyip.org
-echo $(curl -s $ipservice)
+cmd='curl -s'
+#cmd='wget -q -O'
+#cmd='lynx -dump'
+
+#ipservice=whatismyip.org
+ipservice=checkip.dyndns.org
+
+pipecmd=(sed -e 's/.*Current IP Address: //' -e 's/<.*$//') #using brackets to use it as an array and avoid need of scaping
+
+# Run command
+$cmd "$ipservice" | "${pipecmd[@]}"
